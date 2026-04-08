@@ -13,7 +13,15 @@
   --warn:#f59e0b; --err:#ef4444; --ok:#22c55e;
   --txt:#ddeee8; --muted:#527a6e; --dim:#2a3e38;
   --card:#0f1a16; --border:#1a2e28;
+  --heading:#ffffff;
   --r:10px; --mono:'Space Mono',monospace; --sans:'Syne',sans-serif;
+}
+[data-theme="light"] {
+  --bg:#f8faf9; --bg2:#f0f5f3; --bg3:#e8efec;
+  --acc:#0a5c45; --acc2:#16a87e; --acc3:#22d3a0;
+  --txt:#1a2e28; --muted:#527a6e; --dim:#ccdcd6;
+  --card:#ffffff; --border:#d1e0db;
+  --heading:#0a5c45;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -34,7 +42,7 @@ header{
   background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.25);
   color:var(--acc);font-family:var(--mono);font-size:10px;letter-spacing:2.5px;
   text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:20px;}
-h1{font-size:clamp(26px,4.5vw,44px);font-weight:800;line-height:1.1;color:#fff;margin-bottom:10px;}
+h1{font-size:clamp(26px,4.5vw,44px);font-weight:800;line-height:1.1;color:var(--heading);margin-bottom:10px;}
 h1 em{color:var(--acc);font-style:normal;}
 .intro{color:var(--muted);max-width:600px;font-size:15px;margin-bottom:28px;}
 
@@ -84,7 +92,7 @@ h1 em{color:var(--acc);font-style:normal;}
 .ej-info{flex:1;}
 .ej-tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;
   text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
-.ej-titulo{font-size:16px;font-weight:700;color:#fff;}
+.ej-titulo{font-size:16px;font-weight:700;color:var(--heading);}
 .ej-body{padding:20px 22px;}
 .ej-enunciado{
   background:var(--bg3);border-radius:8px;padding:14px 18px;
@@ -155,7 +163,7 @@ h1 em{color:var(--acc);font-style:normal;}
   background:linear-gradient(135deg,rgba(34,211,160,.08),rgba(10,92,69,.08));
   border:1px solid var(--acc3);border-radius:var(--r);padding:28px;
 }
-.send-titulo{font-size:20px;font-weight:800;color:#fff;margin-bottom:6px;}
+.send-titulo{font-size:20px;font-weight:800;color:var(--heading);margin-bottom:6px;}
 .send-sub{font-size:14px;color:var(--muted);margin-bottom:24px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
 @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
@@ -196,7 +204,7 @@ h1 em{color:var(--acc);font-style:normal;}
 }
 .send-ok.show{display:block;animation:pop .4s ease;}
 .send-ok-num{font-size:40px;font-weight:800;color:var(--acc);}
-.send-ok-msg{color:#fff;font-weight:600;margin:6px 0;}
+.send-ok-msg{color:var(--heading);font-weight:600;margin:6px 0;}
 .send-ok-sub{font-size:13px;color:var(--muted);}
 @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
 
@@ -204,15 +212,77 @@ h1 em{color:var(--acc);font-style:normal;}
 footer{text-align:center;padding:28px;border-top:1px solid var(--border);
   color:var(--muted);font-size:12px;font-family:var(--mono);}
 footer span{color:var(--acc);}
+
+/* Theme & Parallax Styles for young devs */
+.theme-btn {
+  float: right;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--txt);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.theme-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  border-color: var(--acc);
+  box-shadow: 0 4px 12px rgba(34,211,160,0.2);
+}
+
+.shape {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: -1;
+  opacity: 0.15;
+  transition: transform 0.2s ease-out;
+  pointer-events: none;
+}
+.shape-1 { width: 40vw; height: 40vw; background: var(--acc); top: -10vh; left: -10vw; }
+.shape-2 { width: 30vw; height: 30vw; background: var(--warn); top: 40vh; right: -5vw; }
+.shape-3 { width: 50vw; height: 50vw; background: var(--acc3); bottom: -20vh; left: 15vw; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ejercicio, .ref-card {
+  transition: transform 0.3s ease, border-color 0.2s ease, box-shadow 0.3s ease;
+}
+.ejercicio:hover, .ref-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+[data-theme="light"] .ejercicio:hover, [data-theme="light"] .ref-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
 </style>
 </head>
 <body>
+<!-- Formas de fondo parallax -->
+<div class="shape shape-1" data-speed="1"></div>
+<div class="shape shape-2" data-speed="-1.5"></div>
+<div class="shape shape-3" data-speed="2"></div>
 
 <header>
 <div class="header-inner">
+  <button id="themeToggle" class="theme-btn">☀️ Modo Claro</button>
   <div class="tag">⚡ Entrenamiento pre-examen</div>
-  <h1>Guía de<br><em>Entrenamiento</em></h1>
-  <p class="intro">Practicá en Visual Studio Code y enviá tus soluciones al profe cuando termines cada ejercicio. 8 misiones. Usás todas las herramientas del año.</p>
+  <h1 class="reveal">Guía de<br><em>Entrenamiento</em></h1>
+  <p class="intro reveal">Practicá en Visual Studio Code y enviá tus soluciones al profe cuando termines cada ejercicio. 8 misiones. Usás todas las herramientas del año.</p>
   <div class="prog-wrap">
     <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
     <div class="prog-meta">
@@ -226,16 +296,20 @@ footer span{color:var(--acc);}
 <main class="layout">
 
 <!-- INFO -->
-<div class="info-box">
+<div class="info-box reveal">
+  <p style="font-size: 15px; margin-bottom: 8px;">
+    <strong>¿Cómo arrancar? (¡Fundamental!) 👇</strong><br>
+    Si tenés un trabajo previo abierto y no querés seguir en él, andá a <strong>File -> Close Folder</strong> para no mezclar nada.
+  </p>
   <p>
-    <strong>¿Cómo trabajar?</strong> Abrí VS Code → creá un archivo nuevo → escribí el código del ejercicio → ejecutalo con <strong>F5</strong> o en la terminal con <code style="color:var(--acc)">python nombre.py</code>. Cuando lo tengas funcionando, copialo acá y marcalo como completado. Al final, enviá todo al profe.
+    Luego iniciá con <strong>Open Folder</strong> y creá una <strong>nueva carpeta</strong> para el proyecto y adentro vas armando todo. Después: creá un archivo nuevo → escribí el código → ejecutalo con <strong>F5</strong> o con <code style="background:var(--dim);border-radius:4px;padding:2px 6px;color:var(--acc)">python nombre.py</code>. Cuando te ande joya, pegalo acá y marcalo como completado. Al final, enviá todo al profe.
   </p>
 </div>
 
 <!-- REFERENCIA RÁPIDA -->
-<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// referencia rápida</div><div class="sec-hdr-line"></div></div>
+<div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// referencia rápida</div><div class="sec-hdr-line"></div></div>
 
-<div class="ref-grid">
+<div class="ref-grid reveal">
   <div class="ref-card">
     <div class="ref-fn">print()</div>
     <div class="ref-desc">Muestra texto o valores en la consola</div>
@@ -279,10 +353,10 @@ footer span{color:var(--acc);}
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// ejercicios</div><div class="sec-hdr-line"></div></div>
+<div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// ejercicios</div><div class="sec-hdr-line"></div></div>
 
 <!-- EJ 1 -->
-<div class="ejercicio" id="ej1">
+<div class="ejercicio reveal" id="ej1">
   <div class="ejercicio-hdr">
     <div class="ej-num">01</div>
     <div class="ej-info">
@@ -317,7 +391,7 @@ Le faltaron: 4.0 kWh para llegar al límite
 </div>
 
 <!-- EJ 2 -->
-<div class="ejercicio" id="ej2">
+<div class="ejercicio reveal" id="ej2">
   <div class="ejercicio-hdr">
     <div class="ej-num">02</div>
     <div class="ej-info">
@@ -351,7 +425,7 @@ Estado: 🚨 ALARMA — temperatura crítica
 </div>
 
 <!-- EJ 3 -->
-<div class="ejercicio" id="ej3">
+<div class="ejercicio reveal" id="ej3">
   <div class="ejercicio-hdr">
     <div class="ej-num">03</div>
     <div class="ej-info">
@@ -388,7 +462,7 @@ Estado: 🚨 ALARMA — temperatura crítica
 </div>
 
 <!-- EJ 4 -->
-<div class="ejercicio" id="ej4">
+<div class="ejercicio reveal" id="ej4">
   <div class="ejercicio-hdr">
     <div class="ej-num">04</div>
     <div class="ej-info">
@@ -428,7 +502,7 @@ Sobre el promedio: 1 lectura(s)
 </div>
 
 <!-- EJ 5 -->
-<div class="ejercicio" id="ej5">
+<div class="ejercicio reveal" id="ej5">
   <div class="ejercicio-hdr">
     <div class="ej-num">05</div>
     <div class="ej-info">
@@ -469,7 +543,7 @@ Promedio: 5.21 bar
 </div>
 
 <!-- EJ 6 -->
-<div class="ejercicio" id="ej6">
+<div class="ejercicio reveal" id="ej6">
   <div class="ejercicio-hdr">
     <div class="ej-num">06</div>
     <div class="ej-info">
@@ -514,7 +588,7 @@ Hasta luego.
 </div>
 
 <!-- EJ 7 -->
-<div class="ejercicio" id="ej7">
+<div class="ejercicio reveal" id="ej7">
   <div class="ejercicio-hdr">
     <div class="ej-num">07</div>
     <div class="ej-info">
@@ -551,7 +625,7 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
 </div>
 
 <!-- EJ 8 — INTEGRADOR -->
-<div class="ejercicio" id="ej8" style="border-color:rgba(245,158,11,.3);">
+<div class="ejercicio reveal" id="ej8" style="border-color:rgba(245,158,11,.3);">
   <div class="ejercicio-hdr" style="background:rgba(245,158,11,.04);">
     <div class="ej-num" style="border-color:var(--warn);color:var(--warn);background:rgba(245,158,11,.1);">08</div>
     <div class="ej-info">
@@ -586,9 +660,9 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
 <!-- ═══════════════════════════════════════════════════════════
      FORMULARIO DE ENVÍO
 ════════════════════════════════════════════════════════════ -->
-<div class="sec-hdr"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// enviar al profe</div><div class="sec-hdr-line"></div></div>
+<div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// enviar al profe</div><div class="sec-hdr-line"></div></div>
 
-<div class="send-card">
+<div class="send-card reveal">
   <div class="send-titulo">Enviar mis ejercicios</div>
   <div class="send-sub">Tus respuestas llegan al profe por email y se registran en la planilla de seguimiento.</div>
 
@@ -674,6 +748,51 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
 </footer>
 
 <script>
+// ── Theme, Parallax & Reveals ─────────────────────────────────
+const themeBtn = document.getElementById('themeToggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+
+if(savedTheme === 'light') {
+  document.documentElement.setAttribute('data-theme', 'light');
+  themeBtn.textContent = '🌙 Modo Oscuro';
+}
+
+themeBtn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  if(current === 'light') {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'dark');
+    themeBtn.textContent = '☀️ Modo Claro';
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+    themeBtn.textContent = '🌙 Modo Oscuro';
+  }
+});
+
+// Parallax en mousemove
+document.addEventListener('mousemove', (e) => {
+  const shapes = document.querySelectorAll('.shape');
+  const x = (window.innerWidth - e.pageX) / 40;
+  const y = (window.innerHeight - e.pageY) / 40;
+  
+  shapes.forEach(shape => {
+    const speed = shape.getAttribute('data-speed');
+    shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+  });
+});
+
+// Scroll Reveal Observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
 // ── Estado de ejercicios ──────────────────────────────────────
 const estado = {1:false,2:false,3:false,4:false,5:false,6:false,7:false,8:false};
 
