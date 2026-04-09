@@ -16,263 +16,132 @@
   --heading:#ffffff;
   --r:10px; --mono:'Space Mono',monospace; --sans:'Syne',sans-serif;
 }
-[data-theme="light"] {
-  --bg:#f8faf9; --bg2:#f0f5f3; --bg3:#e8efec;
-  --acc:#0a5c45; --acc2:#16a87e; --acc3:#22d3a0;
-  --txt:#1a2e28; --muted:#527a6e; --dim:#ccdcd6;
-  --card:#ffffff; --border:#d1e0db;
-  --heading:#0a5c45;
+[data-theme="light"]{
+  --bg:#f8faf9;--bg2:#f0f5f3;--bg3:#e8efec;
+  --acc:#0a5c45;--acc2:#16a87e;--acc3:#22d3a0;
+  --txt:#1a2e28;--muted:#527a6e;--dim:#ccdcd6;
+  --card:#ffffff;--border:#d1e0db;--heading:#0a5c45;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--txt);font-size:16px;line-height:1.7;overflow-x:hidden;}
-
-/* Grain */
 body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.025;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
-/* ── HEADER ────────────────────────────────────────────────── */
-header{
-  padding:56px 24px 40px;
-  background:radial-gradient(ellipse at 20% 0%,rgba(34,211,160,.08) 0%,transparent 60%);
-  border-bottom:1px solid var(--border);
-}
+header{padding:56px 24px 40px;background:radial-gradient(ellipse at 20% 0%,rgba(34,211,160,.08) 0%,transparent 60%);border-bottom:1px solid var(--border);}
 .header-inner{max-width:900px;margin:0 auto;}
-.tag{display:inline-flex;align-items:center;gap:8px;
-  background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.25);
-  color:var(--acc);font-family:var(--mono);font-size:10px;letter-spacing:2.5px;
-  text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:20px;}
+.tag{display:inline-flex;align-items:center;gap:8px;background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.25);color:var(--acc);font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:20px;}
 h1{font-size:clamp(26px,4.5vw,44px);font-weight:800;line-height:1.1;color:var(--heading);margin-bottom:10px;}
 h1 em{color:var(--acc);font-style:normal;}
 .intro{color:var(--muted);max-width:600px;font-size:15px;margin-bottom:28px;}
 
-/* Barra progreso */
 .prog-wrap{margin-bottom:4px;}
 .prog-bar{height:5px;background:var(--dim);border-radius:10px;overflow:hidden;}
-.prog-fill{height:100%;background:linear-gradient(90deg,var(--acc3),var(--acc));
-  border-radius:10px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
-.prog-meta{display:flex;justify-content:space-between;margin-top:6px;
-  font-family:var(--mono);font-size:11px;color:var(--muted);}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--acc3),var(--acc));border-radius:10px;width:0%;transition:width .6s cubic-bezier(.4,0,.2,1);}
+.prog-meta{display:flex;justify-content:space-between;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--muted);}
 
-/* ── LAYOUT ────────────────────────────────────────────────── */
 .layout{max-width:900px;margin:0 auto;padding:40px 24px 100px;display:grid;gap:16px;}
 
-/* ── BLOQUE INFO ───────────────────────────────────────────── */
-.info-box{
-  background:rgba(34,211,160,.06);border:1px solid rgba(34,211,160,.2);
-  border-left:4px solid var(--acc);border-radius:var(--r);padding:18px 22px;
-}
+.info-box{background:rgba(34,211,160,.06);border:1px solid rgba(34,211,160,.2);border-left:4px solid var(--acc);border-radius:var(--r);padding:18px 22px;}
 .info-box p{font-size:14px;color:var(--txt);}
 .info-box strong{color:var(--acc);}
-
-.warn-box{
-  background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);
-  border-left:4px solid var(--warn);border-radius:var(--r);padding:14px 18px;
-}
+.warn-box{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.2);border-left:4px solid var(--warn);border-radius:var(--r);padding:14px 18px;}
 .warn-box p{font-size:13px;color:#fcd34d;}
 
-/* ── EJERCICIO CARD ────────────────────────────────────────── */
-.ejercicio{
-  background:var(--card);border:1px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-  transition:border-color .2s;
-}
+/* ── NIVEL BADGES ── */
+.nivel-1{background:rgba(34,211,160,.12);color:var(--acc);}
+.nivel-2{background:rgba(59,130,246,.12);color:#60a5fa;}
+.nivel-3{background:rgba(245,158,11,.12);color:var(--warn);}
+.nivel-4{background:rgba(239,68,68,.12);color:var(--err);}
+.nivel-badge{display:inline-block;font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:10px;margin-left:8px;vertical-align:middle;}
+
+.ejercicio{background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:border-color .2s,transform .3s ease,box-shadow .3s ease;}
 .ejercicio.done{border-color:var(--acc3);}
-.ejercicio-hdr{
-  padding:18px 22px;
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:flex-start;gap:16px;
-}
-.ej-num{
-  flex-shrink:0;width:40px;height:40px;border-radius:50%;
-  background:rgba(34,211,160,.1);border:1px solid var(--acc3);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--mono);font-size:13px;font-weight:700;color:var(--acc);
-}
+.ejercicio:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.25);}
+.ejercicio-hdr{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:16px;}
+.ej-num{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:rgba(34,211,160,.1);border:1px solid var(--acc3);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--acc);}
 .ej-info{flex:1;}
-.ej-tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;
-  text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.ej-tag{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
 .ej-titulo{font-size:16px;font-weight:700;color:var(--heading);}
 .ej-body{padding:20px 22px;}
-.ej-enunciado{
-  background:var(--bg3);border-radius:8px;padding:14px 18px;
-  font-size:14px;color:var(--txt);margin-bottom:14px;
-  border-left:3px solid var(--acc3);
-}
+.ej-enunciado{background:var(--bg3);border-radius:8px;padding:14px 18px;font-size:14px;color:var(--txt);margin-bottom:14px;border-left:3px solid var(--acc3);}
 .ej-enunciado ul{margin-top:8px;padding-left:16px;}
 .ej-enunciado li{margin-bottom:4px;font-size:13px;color:var(--muted);}
 .ej-enunciado strong{color:var(--acc);}
-
-/* Ejemplo esperado */
-.ejemplo{
-  background:rgba(0,0,0,.5);border-radius:6px;padding:10px 14px;
-  font-family:var(--mono);font-size:12px;color:var(--acc);
-  margin-bottom:16px;border:1px solid var(--dim);
-}
-.ejemplo-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--muted);margin-bottom:6px;}
-
-/* Textarea código */
-.code-label{font-size:12px;letter-spacing:1px;text-transform:uppercase;
-  color:var(--muted);font-family:var(--mono);margin-bottom:8px;display:block;}
-.code-area{
-  width:100%;background:rgba(0,0,0,.6);border:1px solid var(--dim);
-  border-radius:8px;padding:14px 16px;
-  font-family:var(--mono);font-size:13px;color:var(--acc);
-  resize:vertical;min-height:140px;line-height:1.8;
-  outline:none;transition:border-color .2s;
-  tab-size:4;
-}
+.ejemplo{background:rgba(0,0,0,.5);border-radius:6px;padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--acc);margin-bottom:16px;border:1px solid var(--dim);}
+.ejemplo-label{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.pista{background:rgba(59,130,246,.07);border:1px solid rgba(59,130,246,.2);border-radius:6px;padding:10px 14px;font-size:13px;color:#93c5fd;margin-bottom:14px;}
+.pista::before{content:'💡 Pista: ';}
+.code-label{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-family:var(--mono);margin-bottom:8px;display:block;}
+.code-area{width:100%;background:rgba(0,0,0,.6);border:1px solid var(--dim);border-radius:8px;padding:14px 16px;font-family:var(--mono);font-size:13px;color:var(--acc);resize:vertical;min-height:140px;line-height:1.8;outline:none;transition:border-color .2s;tab-size:4;}
 .code-area:focus{border-color:var(--acc3);}
 .code-area::placeholder{color:var(--muted);}
-
-/* Check completado */
 .check-row{display:flex;align-items:center;gap:10px;margin-top:14px;}
-.check-btn{
-  background:none;border:1px solid var(--dim);color:var(--muted);
-  font-family:var(--sans);font-size:13px;font-weight:600;
-  padding:7px 16px;border-radius:6px;cursor:pointer;
-  display:flex;align-items:center;gap:6px;transition:all .2s;
-}
+.check-btn{background:none;border:1px solid var(--dim);color:var(--muted);font-family:var(--sans);font-size:13px;font-weight:600;padding:7px 16px;border-radius:6px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s;}
 .check-btn:hover{border-color:var(--acc);color:var(--acc);}
 .ejercicio.done .check-btn{background:rgba(34,211,160,.1);border-color:var(--acc);color:var(--acc);}
 .check-status{font-size:12px;color:var(--muted);}
 .ejercicio.done .check-status{color:var(--acc);}
 
-/* ── HERRAMIENTAS REFERENCIA ───────────────────────────────── */
 .ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;}
-.ref-card{
-  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
-  padding:14px;
-}
+.ref-card{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px;transition:transform .3s ease;}
+.ref-card:hover{transform:translateY(-3px);}
 .ref-fn{font-family:var(--mono);font-size:14px;color:var(--acc);font-weight:700;margin-bottom:4px;}
 .ref-desc{font-size:12px;color:var(--muted);}
-.ref-ex{font-family:var(--mono);font-size:11px;color:var(--dim);
-  background:rgba(0,0,0,.4);border-radius:4px;padding:4px 8px;margin-top:6px;}
+.ref-ex{font-family:var(--mono);font-size:11px;color:var(--dim);background:rgba(0,0,0,.4);border-radius:4px;padding:4px 8px;margin-top:6px;}
 
-/* ── SECCIÓN TÍTULO ────────────────────────────────────────── */
-.sec-hdr{
-  display:flex;align-items:center;gap:14px;padding:16px 0 8px;
-}
+.sec-hdr{display:flex;align-items:center;gap:14px;padding:16px 0 8px;}
 .sec-hdr-line{flex:1;height:1px;background:var(--border);}
-.sec-hdr-txt{font-family:var(--mono);font-size:10px;letter-spacing:3px;
-  text-transform:uppercase;color:var(--acc);white-space:nowrap;}
+.sec-hdr-txt{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);white-space:nowrap;}
 
-/* ── FORMULARIO ENVÍO ──────────────────────────────────────── */
-.send-card{
-  background:linear-gradient(135deg,rgba(34,211,160,.08),rgba(10,92,69,.08));
-  border:1px solid var(--acc3);border-radius:var(--r);padding:28px;
-}
+/* bloque nivel separador */
+.nivel-bloque{display:flex;align-items:center;gap:12px;padding:10px 0 4px;}
+.nivel-bloque-line{flex:1;height:1px;}
+.nivel-bloque-1 .nivel-bloque-line{background:rgba(34,211,160,.3);}
+.nivel-bloque-2 .nivel-bloque-line{background:rgba(59,130,246,.3);}
+.nivel-bloque-3 .nivel-bloque-line{background:rgba(245,158,11,.3);}
+.nivel-bloque-4 .nivel-bloque-line{background:rgba(239,68,68,.3);}
+.nivel-bloque-txt{font-family:var(--mono);font-size:10px;letter-spacing:2.5px;text-transform:uppercase;white-space:nowrap;padding:3px 12px;border-radius:12px;}
+.nivel-bloque-1 .nivel-bloque-txt{color:var(--acc);background:rgba(34,211,160,.1);border:1px solid rgba(34,211,160,.2);}
+.nivel-bloque-2 .nivel-bloque-txt{color:#60a5fa;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);}
+.nivel-bloque-3 .nivel-bloque-txt{color:var(--warn);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);}
+.nivel-bloque-4 .nivel-bloque-txt{color:var(--err);background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);}
+
+.send-card{background:linear-gradient(135deg,rgba(34,211,160,.08),rgba(10,92,69,.08));border:1px solid var(--acc3);border-radius:var(--r);padding:28px;}
 .send-titulo{font-size:20px;font-weight:800;color:var(--heading);margin-bottom:6px;}
 .send-sub{font-size:14px;color:var(--muted);margin-bottom:24px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
 @media(max-width:560px){.form-row{grid-template-columns:1fr;}}
 .form-group{display:flex;flex-direction:column;gap:6px;}
 .form-label{font-size:12px;color:var(--muted);font-family:var(--mono);letter-spacing:1px;text-transform:uppercase;}
-.form-input{
-  background:var(--bg);border:1px solid var(--dim);color:var(--txt);
-  font-family:var(--sans);font-size:14px;padding:10px 14px;border-radius:6px;
-  outline:none;transition:border-color .2s;
-}
+.form-input{background:var(--bg);border:1px solid var(--dim);color:var(--txt);font-family:var(--sans);font-size:14px;padding:10px 14px;border-radius:6px;outline:none;transition:border-color .2s;}
 .form-input:focus{border-color:var(--acc);}
-.form-select{
-  background:var(--bg);border:1px solid var(--dim);color:var(--txt);
-  font-family:var(--sans);font-size:14px;padding:10px 14px;border-radius:6px;
-  outline:none;cursor:pointer;
-}
-.form-notas{
-  width:100%;background:var(--bg);border:1px solid var(--dim);color:var(--txt);
-  font-family:var(--sans);font-size:14px;padding:10px 14px;border-radius:6px;
-  resize:vertical;min-height:70px;outline:none;margin-bottom:16px;
-  transition:border-color .2s;
-}
+.form-select{background:var(--bg);border:1px solid var(--dim);color:var(--txt);font-family:var(--sans);font-size:14px;padding:10px 14px;border-radius:6px;outline:none;cursor:pointer;}
+.form-notas{width:100%;background:var(--bg);border:1px solid var(--dim);color:var(--txt);font-family:var(--sans);font-size:14px;padding:10px 14px;border-radius:6px;resize:vertical;min-height:70px;outline:none;margin-bottom:16px;transition:border-color .2s;}
 .form-notas:focus{border-color:var(--acc);}
-
-.send-btn{
-  background:var(--acc);color:var(--bg);border:none;
-  font-family:var(--sans);font-size:15px;font-weight:700;
-  padding:13px 32px;border-radius:6px;cursor:pointer;
-  transition:background .2s,transform .1s;width:100%;
-}
+.send-btn{background:var(--acc);color:var(--bg);border:none;font-family:var(--sans);font-size:15px;font-weight:700;padding:13px 32px;border-radius:6px;cursor:pointer;transition:background .2s,transform .1s;width:100%;}
 .send-btn:hover{background:var(--acc2);transform:translateY(-1px);}
 .send-btn:disabled{background:var(--muted);cursor:not-allowed;transform:none;}
-
-.send-ok{
-  display:none;text-align:center;padding:20px;
-  background:rgba(34,211,160,.1);border:1px solid var(--acc);
-  border-radius:8px;margin-top:14px;
-}
+.send-ok{display:none;text-align:center;padding:20px;background:rgba(34,211,160,.1);border:1px solid var(--acc);border-radius:8px;margin-top:14px;}
 .send-ok.show{display:block;animation:pop .4s ease;}
 .send-ok-num{font-size:40px;font-weight:800;color:var(--acc);}
 .send-ok-msg{color:var(--heading);font-weight:600;margin:6px 0;}
 .send-ok-sub{font-size:13px;color:var(--muted);}
 @keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
 
-/* Footer */
-footer{text-align:center;padding:28px;border-top:1px solid var(--border);
-  color:var(--muted);font-size:12px;font-family:var(--mono);}
+.theme-btn{float:right;background:var(--bg3);border:1px solid var(--border);color:var(--txt);padding:8px 16px;border-radius:20px;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:14px;transition:all .3s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;gap:8px;}
+.theme-btn:hover{transform:scale(1.05) translateY(-2px);border-color:var(--acc);box-shadow:0 4px 12px rgba(34,211,160,.2);}
+.shape{position:fixed;border-radius:50%;filter:blur(70px);z-index:-1;opacity:.15;transition:transform .2s ease-out;pointer-events:none;}
+.shape-1{width:40vw;height:40vw;background:var(--acc);top:-10vh;left:-10vw;}
+.shape-2{width:30vw;height:30vw;background:var(--warn);top:40vh;right:-5vw;}
+.shape-3{width:50vw;height:50vw;background:var(--acc3);bottom:-20vh;left:15vw;}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.2,.8,.2,1);}
+.reveal.active{opacity:1;transform:translateY(0);}
+footer{text-align:center;padding:28px;border-top:1px solid var(--border);color:var(--muted);font-size:12px;font-family:var(--mono);}
 footer span{color:var(--acc);}
-
-/* Theme & Parallax Styles for young devs */
-.theme-btn {
-  float: right;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  color: var(--txt);
-  padding: 8px 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.theme-btn:hover {
-  transform: scale(1.05) translateY(-2px);
-  border-color: var(--acc);
-  box-shadow: 0 4px 12px rgba(34,211,160,0.2);
-}
-
-.shape {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(70px);
-  z-index: -1;
-  opacity: 0.15;
-  transition: transform 0.2s ease-out;
-  pointer-events: none;
-}
-.shape-1 { width: 40vw; height: 40vw; background: var(--acc); top: -10vh; left: -10vw; }
-.shape-2 { width: 30vw; height: 30vw; background: var(--warn); top: 40vh; right: -5vw; }
-.shape-3 { width: 50vw; height: 50vw; background: var(--acc3); bottom: -20vh; left: 15vw; }
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.ejercicio, .ref-card {
-  transition: transform 0.3s ease, border-color 0.2s ease, box-shadow 0.3s ease;
-}
-.ejercicio:hover, .ref-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
-}
-[data-theme="light"] .ejercicio:hover, [data-theme="light"] .ref-card:hover {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-}
 </style>
 </head>
 <body>
-<!-- Formas de fondo parallax -->
 <div class="shape shape-1" data-speed="1"></div>
 <div class="shape shape-2" data-speed="-1.5"></div>
 <div class="shape shape-3" data-speed="2"></div>
@@ -280,113 +149,65 @@ footer span{color:var(--acc);}
 <header>
 <div class="header-inner">
   <button id="themeToggle" class="theme-btn">☀️ Modo Claro</button>
-  <div class="tag">⚡ Entrenamiento pre-examen</div>
+  <div class="tag">⚡ Entrenamiento pre-examen · 23 misiones</div>
   <h1 class="reveal">Guía de<br><em>Entrenamiento</em></h1>
-  <p class="intro reveal">Practicá en Visual Studio Code y enviá tus soluciones al profe cuando termines cada ejercicio. 8 misiones. Usás todas las herramientas del año.</p>
+  <p class="intro reveal">Practicá en Visual Studio Code y enviá tus soluciones al profe cuando termines. 23 misiones en 4 niveles de dificultad. Usás todas las herramientas del año.</p>
   <div class="prog-wrap">
     <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
-    <div class="prog-meta">
-      <span id="progTxt">0 de 8 ejercicios completados</span>
-      <span id="progPct">0%</span>
-    </div>
+    <div class="prog-meta"><span id="progTxt">0 de 23 ejercicios completados</span><span id="progPct">0%</span></div>
   </div>
 </div>
 </header>
 
 <main class="layout">
 
-<!-- INFO -->
 <div class="info-box reveal">
-  <p style="font-size: 15px; margin-bottom: 8px;">
-    <strong>¿Cómo arrancar? (¡Fundamental!) 👇</strong><br>
-    Si tenés un trabajo previo abierto y no querés seguir en él, andá a <strong>File -> Close Folder</strong> para no mezclar nada.
-  </p>
-  <p>
-    Luego iniciá con <strong>Open Folder</strong> y creá una <strong>nueva carpeta</strong> para el proyecto y adentro vas armando todo. Después: creá un archivo nuevo → escribí el código → ejecutalo con <strong>F5</strong> o con <code style="background:var(--dim);border-radius:4px;padding:2px 6px;color:var(--acc)">py nombre.py</code>. Cuando te ande joya, pegalo acá y marcalo como completado. Al final, enviá todo al profe.
-  </p>
+  <p style="font-size:15px;margin-bottom:8px;"><strong>¿Cómo arrancar? 👇</strong><br>Si tenés un trabajo previo abierto: <strong>File → Close Folder</strong>.</p>
+  <p>Después: <strong>Open Folder</strong> → nueva carpeta → nuevo archivo → escribí el código → ejecutalo con <strong>F5</strong> o <code style="background:var(--dim);border-radius:4px;padding:2px 6px;color:var(--acc)">python nombre.py</code>. Cuando ande, pegalo acá y marcalo como completado.</p>
 </div>
 
-<!-- REFERENCIA RÁPIDA -->
 <div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// referencia rápida</div><div class="sec-hdr-line"></div></div>
-
 <div class="ref-grid reveal">
-  <div class="ref-card">
-    <div class="ref-fn">print()</div>
-    <div class="ref-desc">Muestra texto o valores en la consola</div>
-    <div class="ref-ex">print(f"Temp: {temp} °C")</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">input()</div>
-    <div class="ref-desc">Pide un dato al usuario. SIEMPRE devuelve texto</div>
-    <div class="ref-ex">nombre = input("Tu nombre: ")</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">float()</div>
-    <div class="ref-desc">Convierte a número decimal</div>
-    <div class="ref-ex">temp = float(input("Temperatura: "))</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">int()</div>
-    <div class="ref-desc">Convierte a número entero (sin decimales)</div>
-    <div class="ref-ex">cant = int(input("Cantidad: "))</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">if / elif / else</div>
-    <div class="ref-desc">Toma decisiones según condiciones</div>
-    <div class="ref-ex">if temp > 90:<br>&nbsp;&nbsp;print("Alarma")</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">for</div>
-    <div class="ref-desc">Repite N veces con range() o recorre una lista</div>
-    <div class="ref-ex">for i in range(5):<br>&nbsp;&nbsp;print(i)</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">while</div>
-    <div class="ref-desc">Repite mientras la condición sea True</div>
-    <div class="ref-ex">while nivel < 48:<br>&nbsp;&nbsp;nivel += 0.5</div>
-  </div>
-  <div class="ref-card">
-    <div class="ref-fn">Operadores</div>
-    <div class="ref-desc">Aritméticos: + − * / // % **<br>Comparación: == != > < >= <=<br>Lógicos: and or not</div>
-    <div class="ref-ex">if temp > 90 or presion > 6:</div>
-  </div>
+  <div class="ref-card"><div class="ref-fn">print()</div><div class="ref-desc">Muestra texto o valores en la consola</div><div class="ref-ex">print(f"Temp: {temp} °C")</div></div>
+  <div class="ref-card"><div class="ref-fn">input()</div><div class="ref-desc">Pide un dato. SIEMPRE devuelve texto</div><div class="ref-ex">nombre = input("Tu nombre: ")</div></div>
+  <div class="ref-card"><div class="ref-fn">float() / int()</div><div class="ref-desc">Convierte texto a número</div><div class="ref-ex">temp = float(input("°C: "))</div></div>
+  <div class="ref-card"><div class="ref-fn">if / elif / else</div><div class="ref-desc">Toma decisiones según condiciones</div><div class="ref-ex">if temp > 90: print("Alarma")</div></div>
+  <div class="ref-card"><div class="ref-fn">for</div><div class="ref-desc">Repite N veces con range()</div><div class="ref-ex">for i in range(1, 11): print(i)</div></div>
+  <div class="ref-card"><div class="ref-fn">while</div><div class="ref-desc">Repite mientras la condición sea True</div><div class="ref-ex">while nivel &lt; 48: nivel += 0.5</div></div>
+  <div class="ref-card"><div class="ref-fn">break / continue</div><div class="ref-desc">break corta el loop. continue salta al próximo ciclo</div><div class="ref-ex">if nivel > 55: break</div></div>
+  <div class="ref-card"><div class="ref-fn">Operadores</div><div class="ref-desc">+ − * / // % **  |  == != > &lt; >= &lt;=  |  and or not</div><div class="ref-ex">if temp > 90 or presion > 6:</div></div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// ejercicios</div><div class="sec-hdr-line"></div></div>
+<!-- ════════════════════════════════════════════
+     NIVEL 1 — FUNDAMENTOS
+════════════════════════════════════════════ -->
+<div class="nivel-bloque nivel-bloque-1 reveal">
+  <div class="nivel-bloque-line"></div>
+  <div class="nivel-bloque-txt">// Nivel 1 — Fundamentos · EJ 01 al 06</div>
+  <div class="nivel-bloque-line"></div>
+</div>
+
+<div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// ejercicios 01 – 06</div><div class="sec-hdr-line"></div></div>
 
 <!-- EJ 1 -->
 <div class="ejercicio reveal" id="ej1">
   <div class="ejercicio-hdr">
     <div class="ej-num">01</div>
     <div class="ej-info">
-      <div class="ej-tag">print · input · float · operadores aritméticos</div>
+      <div class="ej-tag">print · input · float · operadores aritméticos <span class="nivel-badge nivel-1">nivel 1</span></div>
       <div class="ej-titulo">Calculadora de consumo eléctrico</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      El operador ingresa la potencia de un motor en kW y cuántas horas estuvo encendido. El programa debe mostrar:
-      <ul>
-        <li>El consumo total en kWh</li>
-        <li>El costo si el kWh vale $210</li>
-        <li>Cuántos kWh le faltaron o sobraron para alcanzar el límite diario de 25 kWh</li>
-      </ul>
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo de salida esperada</div>
-Potencia del motor (kW): <strong>3.5</strong>
+    <div class="ej-enunciado">El operador ingresa la potencia de un motor en kW y cuántas horas estuvo encendido. El programa debe mostrar:<ul><li>El consumo total en kWh</li><li>El costo si el kWh vale $210</li><li>Cuántos kWh le faltaron o sobraron para alcanzar el límite diario de 25 kWh</li></ul></div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo de salida</div>Potencia del motor (kW): <strong>3.5</strong>
 Horas de funcionamiento: <strong>6</strong>
 Consumo total: 21.0 kWh
 Costo: $4410.0
-Le faltaron: 4.0 kWh para llegar al límite
-    </div>
-    <label class="code-label">Tu código Python (copiá desde VS Code):</label>
+Le faltaron: 4.0 kWh para llegar al límite</div>
+    <label class="code-label">Tu código Python:</label>
     <textarea class="code-area" id="code1" placeholder="# Ejercicio 1 — Consumo eléctrico&#10;potencia = float(input('Potencia del motor (kW): '))&#10;# ... completá desde acá"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(1)">☐ Marcar como completado</button>
-      <span class="check-status" id="st1"></span>
-    </div>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(1)">☐ Marcar como completado</button><span class="check-status" id="st1"></span></div>
   </div>
 </div>
 
@@ -395,32 +216,18 @@ Le faltaron: 4.0 kWh para llegar al límite
   <div class="ejercicio-hdr">
     <div class="ej-num">02</div>
     <div class="ej-info">
-      <div class="ej-tag">input · float · if / elif / else</div>
+      <div class="ej-tag">input · float · if / elif / else <span class="nivel-badge nivel-1">nivel 1</span></div>
       <div class="ej-titulo">Clasificador de temperatura de motor</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      El operador ingresa la temperatura en °C. El programa evalúa el estado:
-      <ul>
-        <li><strong>Mayor a 90°C</strong> → "🚨 ALARMA — temperatura crítica"</li>
-        <li><strong>Entre 60 y 90°C (inclusive)</strong> → "✓ NORMAL — operación estándar"</li>
-        <li><strong>Menor a 60°C</strong> → "❄ FRÍO — motor por debajo del rango"</li>
-      </ul>
-      Además: convertí la temperatura a Fahrenheit (°F = °C × 9/5 + 32) y mostrala.
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo de salida esperada</div>
-Temperatura del motor (°C): <strong>95</strong>
+    <div class="ej-enunciado">El operador ingresa la temperatura en °C. El programa evalúa el estado:<ul><li><strong>Mayor a 90°C</strong> → "🚨 ALARMA — temperatura crítica"</li><li><strong>Entre 60 y 90°C (inclusive)</strong> → "✓ NORMAL — operación estándar"</li><li><strong>Menor a 60°C</strong> → "❄ FRÍO — motor por debajo del rango"</li></ul>Además convertí la temperatura a Fahrenheit (°F = °C × 9/5 + 32) y mostrala.</div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo de salida</div>Temperatura del motor (°C): <strong>95</strong>
 En Fahrenheit: 203.0 °F
-Estado: 🚨 ALARMA — temperatura crítica
-    </div>
+Estado: 🚨 ALARMA — temperatura crítica</div>
     <label class="code-label">Tu código Python:</label>
     <textarea class="code-area" id="code2" placeholder="# Ejercicio 2 — Clasificador de temperatura"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(2)">☐ Marcar como completado</button>
-      <span class="check-status" id="st2"></span>
-    </div>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(2)">☐ Marcar como completado</button><span class="check-status" id="st2"></span></div>
   </div>
 </div>
 
@@ -429,35 +236,20 @@ Estado: 🚨 ALARMA — temperatura crítica
   <div class="ejercicio-hdr">
     <div class="ej-num">03</div>
     <div class="ej-info">
-      <div class="ej-tag">for · range · print · operadores</div>
+      <div class="ej-tag">for · range · print · operadores <span class="nivel-badge nivel-1">nivel 1</span></div>
       <div class="ej-titulo">Tabla de conversión automática</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      Usá un bucle <strong>for</strong> para generar automáticamente una tabla de conversión de Celsius a Fahrenheit, desde 0°C hasta 100°C, de a 10 grados.
-      <ul>
-        <li>Cada fila: <code>| {celsius}°C | {fahrenheit}°F |</code></li>
-        <li>Imprimí un encabezado y una línea separadora antes de la tabla</li>
-      </ul>
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo de salida esperada</div>
-=== TABLA DE CONVERSIÓN ===
+    <div class="ej-enunciado">Usá un bucle <strong>for</strong> para generar una tabla de conversión de Celsius a Fahrenheit, desde 0°C hasta 100°C, de a 10 grados.<ul><li>Cada fila: <code>| {celsius}°C | {fahrenheit}°F |</code></li><li>Imprimí un encabezado y una línea separadora antes de la tabla</li></ul></div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo de salida</div>=== TABLA DE CONVERSIÓN ===
 | Celsius | Fahrenheit |
 |---------|------------|
 |   0 °C  |   32.0 °F  |
-|  10 °C  |   50.0 °F  |
-|  20 °C  |   68.0 °F  |
-...
-| 100 °C  |  212.0 °F  |
-    </div>
+|  10 °C  |   50.0 °F  |</div>
     <label class="code-label">Tu código Python:</label>
-    <textarea class="code-area" id="code3" placeholder="# Ejercicio 3 — Tabla con for&#10;print('=== TABLA DE CONVERSIÓN ===')&#10;# ... usá for i in range(0, 101, 10):"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(3)">☐ Marcar como completado</button>
-      <span class="check-status" id="st3"></span>
-    </div>
+    <textarea class="code-area" id="code3" placeholder="# Ejercicio 3 — Tabla con for&#10;print('=== TABLA DE CONVERSIÓN ===')&#10;for celsius in range(0, 101, 10):&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(3)">☐ Marcar como completado</button><span class="check-status" id="st3"></span></div>
   </div>
 </div>
 
@@ -466,38 +258,19 @@ Estado: 🚨 ALARMA — temperatura crítica
   <div class="ejercicio-hdr">
     <div class="ej-num">04</div>
     <div class="ej-info">
-      <div class="ej-tag">while · input · if · acumulador</div>
+      <div class="ej-tag">while · input · if · acumulador <span class="nivel-badge nivel-1">nivel 1</span></div>
       <div class="ej-titulo">Monitor de lecturas de caudal</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      El operador ingresa lecturas de caudal (m³/s) una por una. El programa sigue pidiendo lecturas <strong>hasta que el usuario escriba -1</strong> para terminar. Al final muestra:
-      <ul>
-        <li>Cuántas lecturas se registraron</li>
-        <li>El caudal máximo y mínimo</li>
-        <li>El promedio</li>
-        <li>Cuántas lecturas estuvieron por encima del promedio</li>
-      </ul>
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo de salida esperada</div>
-Caudal (m³/s) o -1 para terminar: <strong>45.2</strong>
+    <div class="ej-enunciado">El operador ingresa lecturas de caudal (m³/s) una por una. El programa sigue pidiendo <strong>hasta que el usuario escriba -1</strong>. Al final muestra:<ul><li>Cuántas lecturas se registraron</li><li>El caudal máximo y mínimo</li><li>El promedio</li><li>Cuántas lecturas estuvieron por encima del promedio</li></ul></div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo de salida</div>Caudal (m³/s) o -1 para terminar: <strong>45.2</strong>
 Caudal (m³/s) o -1 para terminar: <strong>51.8</strong>
-Caudal (m³/s) o -1 para terminar: <strong>38.0</strong>
 Caudal (m³/s) o -1 para terminar: <strong>-1</strong>
---- Resumen ---
-Lecturas: 3
-Máximo: 51.8 | Mínimo: 38.0
-Promedio: 45.0
-Sobre el promedio: 1 lectura(s)
-    </div>
+Lecturas: 2 | Máximo: 51.8 | Mínimo: 45.2</div>
     <label class="code-label">Tu código Python:</label>
-    <textarea class="code-area" id="code4" placeholder="# Ejercicio 4 — while con acumuladores&#10;lecturas = []&#10;while True:&#10;    valor = float(input('Caudal (m³/s) o -1 para terminar: '))&#10;    if valor == -1:&#10;        break&#10;    # ... continuá"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(4)">☐ Marcar como completado</button>
-      <span class="check-status" id="st4"></span>
-    </div>
+    <textarea class="code-area" id="code4" placeholder="# Ejercicio 4 — while con acumuladores&#10;lecturas = []&#10;while True:&#10;    valor = float(input('Caudal o -1 para terminar: '))&#10;    if valor == -1:&#10;        break&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(4)">☐ Marcar como completado</button><span class="check-status" id="st4"></span></div>
   </div>
 </div>
 
@@ -506,39 +279,15 @@ Sobre el promedio: 1 lectura(s)
   <div class="ejercicio-hdr">
     <div class="ej-num">05</div>
     <div class="ej-info">
-      <div class="ej-tag">for · if · and / or · contador</div>
+      <div class="ej-tag">for · if · and / or · contador <span class="nivel-badge nivel-1">nivel 1</span></div>
       <div class="ej-titulo">Análisis de serie de presiones</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      Tenés esta lista de lecturas de presión (en bar) de una cañería industrial. <strong>Copiala tal cual en tu código:</strong>
-      <br><code style="color:var(--acc);font-size:13px;">presiones = [3.2, 5.8, 6.1, 4.5, 7.2, 3.9, 5.0, 6.8, 4.1, 5.5]</code><br><br>
-      Usá un <strong>for</strong> para analizar cada valor y contar:
-      <ul>
-        <li>Lecturas en rango normal (entre 4.0 y 6.0 inclusive)</li>
-        <li>Lecturas por debajo del rango (menos de 4.0)</li>
-        <li>Lecturas por encima del rango (más de 6.0) → <strong>ALARMA</strong></li>
-        <li>El promedio de todas las lecturas</li>
-      </ul>
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo de salida esperada</div>
-Análisis de presiones:
-[1] 3.2 bar → ⬇ BAJA
-[2] 5.8 bar → ✓ Normal
-[3] 6.1 bar → ⬆ ALARMA
-...
---- Resumen ---
-Normales: 5 | Bajas: 2 | Alarmas: 3
-Promedio: 5.21 bar
-    </div>
+    <div class="ej-enunciado">Copiá esta lista en tu código: <code style="color:var(--acc)">presiones = [3.2, 5.8, 6.1, 4.5, 7.2, 3.9, 5.0, 6.8, 4.1, 5.5]</code><br><br>Usá un <strong>for</strong> para analizar cada valor y contar:<ul><li>Lecturas en rango normal (entre 4.0 y 6.0 inclusive)</li><li>Lecturas por debajo del rango (&lt;4.0)</li><li>Lecturas por encima del rango (&gt;6.0) → <strong>ALARMA</strong></li><li>El promedio de todas</li></ul></div>
     <label class="code-label">Tu código Python:</label>
-    <textarea class="code-area" id="code5" placeholder="# Ejercicio 5 — for con if y contadores&#10;presiones = [3.2, 5.8, 6.1, 4.5, 7.2, 3.9, 5.0, 6.8, 4.1, 5.5]&#10;normales = 0&#10;bajas = 0&#10;alarmas = 0&#10;suma = 0&#10;# ... continuá con for"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(5)">☐ Marcar como completado</button>
-      <span class="check-status" id="st5"></span>
-    </div>
+    <textarea class="code-area" id="code5" placeholder="# Ejercicio 5 — for con if y contadores&#10;presiones = [3.2, 5.8, 6.1, 4.5, 7.2, 3.9, 5.0, 6.8, 4.1, 5.5]&#10;normales = bajas = alarmas = suma = 0"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(5)">☐ Marcar como completado</button><span class="check-status" id="st5"></span></div>
   </div>
 </div>
 
@@ -547,44 +296,25 @@ Promedio: 5.21 bar
   <div class="ejercicio-hdr">
     <div class="ej-num">06</div>
     <div class="ej-info">
-      <div class="ej-tag">while · if · validación de entrada</div>
+      <div class="ej-tag">while · if · validación de entrada <span class="nivel-badge nivel-1">nivel 1</span></div>
       <div class="ej-titulo">Menú de opciones con validación</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      Creá un menú que se repite hasta que el usuario elija "Salir". El menú tiene estas opciones:
-      <ul>
-        <li><strong>1</strong> → Convertir °C a °F</li>
-        <li><strong>2</strong> → Calcular consumo eléctrico (kW × horas)</li>
-        <li><strong>3</strong> → Salir del programa</li>
-        <li>Cualquier otro número → "Opción inválida, ingresá 1, 2 o 3"</li>
-      </ul>
-      El programa pide los datos necesarios según la opción elegida.
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo de salida esperada</div>
-=== SISTEMA DE CONVERSIONES ===
-1. Celsius → Fahrenheit
-2. Consumo eléctrico
-3. Salir
-Opción: <strong>1</strong>
-Temperatura (°C): <strong>100</strong>
-Resultado: 212.0 °F
-
-Opción: <strong>5</strong>
-⚠ Opción inválida — ingresá 1, 2 o 3
-
-Opción: <strong>3</strong>
-Hasta luego.
-    </div>
+    <div class="ej-enunciado">Creá un menú que se repite hasta que el usuario elija "Salir":<ul><li><strong>1</strong> → Convertir °C a °F</li><li><strong>2</strong> → Calcular consumo eléctrico (kW × horas)</li><li><strong>3</strong> → Salir</li><li>Otro número → "Opción inválida"</li></ul></div>
     <label class="code-label">Tu código Python:</label>
-    <textarea class="code-area" id="code6" placeholder="# Ejercicio 6 — Menú con while&#10;while True:&#10;    print('=== SISTEMA DE CONVERSIONES ===')&#10;    print('1. Celsius → Fahrenheit')&#10;    # ... completá el menú"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(6)">☐ Marcar como completado</button>
-      <span class="check-status" id="st6"></span>
-    </div>
+    <textarea class="code-area" id="code6" placeholder="# Ejercicio 6 — Menú con while&#10;while True:&#10;    print('=== SISTEMA ===')&#10;    opcion = int(input('Opción: '))&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(6)">☐ Marcar como completado</button><span class="check-status" id="st6"></span></div>
   </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     NIVEL 2 — EN MARCHA
+════════════════════════════════════════════ -->
+<div class="nivel-bloque nivel-bloque-2 reveal">
+  <div class="nivel-bloque-line"></div>
+  <div class="nivel-bloque-txt">// Nivel 2 — En marcha · EJ 07 al 12</div>
+  <div class="nivel-bloque-line"></div>
 </div>
 
 <!-- EJ 7 -->
@@ -592,101 +322,364 @@ Hasta luego.
   <div class="ejercicio-hdr">
     <div class="ej-num">07</div>
     <div class="ej-info">
-      <div class="ej-tag">for · if · acumuladores · % módulo</div>
+      <div class="ej-tag">for · if · % módulo · acumuladores <span class="nivel-badge nivel-2">nivel 2</span></div>
       <div class="ej-titulo">Simulador de turnos de mantenimiento</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado">
-      El operador ingresa cuántas horas trabajó la planta hoy. Usá un <strong>for</strong> que recorra cada hora (desde la hora 1 hasta la N) y para cada una:
-      <ul>
-        <li>Si la hora es múltiplo de 4 → "Hora X: 🔧 Revisión de mantenimiento"</li>
-        <li>Si la hora es múltiplo de 2 (pero no de 4) → "Hora X: 📊 Lectura de sensores"</li>
-        <li>Las demás → "Hora X: ▷ Operación normal"</li>
-      </ul>
-      Al final: cuántas revisiones, lecturas y horas normales hubo.
-    </div>
-    <div class="ejemplo">
-      <div class="ejemplo-label">Ejemplo con 10 horas</div>
-Hora 1: ▷ Operación normal
-Hora 2: 📊 Lectura de sensores
-Hora 3: ▷ Operación normal
-Hora 4: 🔧 Revisión de mantenimiento
-...
-Revisiones: 2 | Lecturas: 3 | Normal: 5
-    </div>
+    <div class="ej-enunciado">El operador ingresa cuántas horas trabajó la planta. Un <strong>for</strong> recorre cada hora:<ul><li>Múltiplo de 4 → "🔧 Revisión de mantenimiento"</li><li>Múltiplo de 2 (no de 4) → "📊 Lectura de sensores"</li><li>Resto → "▷ Operación normal"</li></ul>Al final: cuántas revisiones, lecturas y horas normales hubo.</div>
     <label class="code-label">Tu código Python:</label>
-    <textarea class="code-area" id="code7" placeholder="# Ejercicio 7 — Turnos con for y %&#10;horas = int(input('Horas trabajadas hoy: '))&#10;revisiones = 0&#10;lecturas = 0&#10;normal = 0&#10;for hora in range(1, horas + 1):&#10;    # ... usá % para saber si es múltiplo"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(7)">☐ Marcar como completado</button>
-      <span class="check-status" id="st7"></span>
-    </div>
+    <textarea class="code-area" id="code7" placeholder="# Ejercicio 7 — Turnos con for y %&#10;horas = int(input('Horas trabajadas hoy: '))&#10;revisiones = lecturas = normal = 0&#10;for hora in range(1, horas + 1):&#10;    # usá % para saber si es múltiplo"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(7)">☐ Marcar como completado</button><span class="check-status" id="st7"></span></div>
   </div>
 </div>
 
-<!-- EJ 8 — INTEGRADOR -->
+<!-- EJ 8 -->
 <div class="ejercicio reveal" id="ej8" style="border-color:rgba(245,158,11,.3);">
   <div class="ejercicio-hdr" style="background:rgba(245,158,11,.04);">
     <div class="ej-num" style="border-color:var(--warn);color:var(--warn);background:rgba(245,158,11,.1);">08</div>
     <div class="ej-info">
-      <div class="ej-tag" style="color:var(--warn);">⭐ Integrador — todas las herramientas</div>
+      <div class="ej-tag" style="color:var(--warn);">⭐ integrador parcial <span class="nivel-badge nivel-2">nivel 2</span></div>
       <div class="ej-titulo">Sistema de monitoreo de represa</div>
     </div>
   </div>
   <div class="ej-body">
-    <div class="ej-enunciado" style="border-left-color:var(--warn);">
-      Este ejercicio usa <strong>todo lo que aprendiste</strong>. El operador ingresa el nivel actual de la represa (en metros) y el número de horas de monitoreo. El programa:
-      <ul>
-        <li>Valida que el nivel esté entre 0 y 60 metros (si no, pide de nuevo con <strong>while</strong>)</li>
-        <li>Simula el llenado: en cada hora el nivel sube entre 0.5 y 1.5 m (usá <code>nivel += 1.0</code> simplificado)</li>
-        <li>En cada hora muestra el nivel y el estado: CRÍTICO (≥50), ALERTA (≥45), NORMAL (≥30), BAJO (&lt;30)</li>
-        <li>Si el nivel supera 55 m en cualquier momento, el <strong>for</strong> debe detenerse (usá <strong>break</strong>) y mostrar "⛔ Desbordamiento inminente — sistema detenido"</li>
-        <li>Al final muestra el nivel máximo alcanzado, el estado final y cuántas horas operó antes del corte (o las horas completas)</li>
-      </ul>
-    </div>
+    <div class="ej-enunciado" style="border-left-color:var(--warn);">El operador ingresa el nivel actual de la represa (0–60 m) y las horas de monitoreo. El programa:<ul><li>Valida el nivel con <strong>while</strong></li><li>Simula el llenado: cada hora sube 1.0 m</li><li>Muestra estado por hora: CRÍTICO (≥50), ALERTA (≥45), NORMAL (≥30), BAJO (&lt;30)</li><li>Si supera 55 m usa <strong>break</strong> y muestra "⛔ Desbordamiento inminente"</li><li>Al final: nivel máximo, estado final y horas operadas</li></ul></div>
     <label class="code-label">Tu código Python:</label>
-    <textarea class="code-area" id="code8" style="min-height:200px;" placeholder="# Ejercicio 8 — Sistema integrador&#10;# Validación con while&#10;while True:&#10;    nivel = float(input('Nivel actual de la represa (0-60 m): '))&#10;    if 0 <= nivel <= 60:&#10;        break&#10;    print('⚠ Valor fuera de rango')&#10;# ... continuá con for y las condiciones"></textarea>
-    <div class="check-row">
-      <button class="check-btn" onclick="marcarHecho(8)" style="border-color:var(--warn);color:var(--warn);">☐ Marcar como completado</button>
-      <span class="check-status" id="st8"></span>
+    <textarea class="code-area" id="code8" style="min-height:200px;" placeholder="# Ejercicio 8 — Sistema integrador&#10;while True:&#10;    nivel = float(input('Nivel (0-60 m): '))&#10;    if 0 <= nivel <= 60: break&#10;    print('⚠ Valor fuera de rango')&#10;horas = int(input('Horas de monitoreo: '))&#10;# ... continuá con for"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(8)" style="border-color:var(--warn);color:var(--warn);">☐ Marcar como completado</button><span class="check-status" id="st8"></span></div>
+  </div>
+</div>
+
+<!-- EJ 9 -->
+<div class="ejercicio reveal" id="ej9">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">09</div>
+    <div class="ej-info">
+      <div class="ej-tag">for · if · acumulador · string formatting <span class="nivel-badge nivel-2">nivel 2</span></div>
+      <div class="ej-titulo">Tabla de potencia del motor</div>
     </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">El operador ingresa la potencia base de un motor en kW. Usá un <strong>for</strong> para generar una tabla que muestre el consumo para 1, 2, 3, 4, 5, 6, 8, 10, 12 y 24 horas de funcionamiento. Para cada fila calculá:<ul><li>El consumo en kWh</li><li>El costo si el kWh vale $210</li><li>Una barra de progreso visual hecha con <code>█</code> proporcional al consumo (máximo 20 caracteres de barra para 24 hs)</li></ul></div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo con potencia = 3.5 kW</div>Potencia del motor (kW): <strong>3.5</strong>
+Horas | Consumo  | Costo     | Barra
+------|----------|-----------|---------------------
+  1 h |  3.5 kWh |  $735.0   | ████
+  2 h |  7.0 kWh | $1470.0   | ████████
+ 24 h | 84.0 kWh | $17640.0  | ████████████████████</div>
+    <div class="pista">Para la barra: <code>barras = round((horas / 24) * 20)</code> y luego <code>'█' * barras</code></div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code9" placeholder="# Ejercicio 9 — Tabla de potencia&#10;potencia = float(input('Potencia del motor (kW): '))&#10;horas_lista = [1, 2, 3, 4, 5, 6, 8, 10, 12, 24]&#10;for horas in horas_lista:&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(9)">☐ Marcar como completado</button><span class="check-status" id="st9"></span></div>
+  </div>
+</div>
+
+<!-- EJ 10 -->
+<div class="ejercicio reveal" id="ej10">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">10</div>
+    <div class="ej-info">
+      <div class="ej-tag">while · if · acumuladores múltiples · promedio acumulado <span class="nivel-badge nivel-2">nivel 2</span></div>
+      <div class="ej-titulo">Registro de turnos de producción</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">El usuario ingresa la producción de cada turno (en unidades). El programa termina cuando el usuario escribe 0. Para cada turno muestra si está <strong>por encima o por debajo del promedio acumulado hasta ese momento</strong>. Al final muestra:<ul><li>Total de turnos registrados</li><li>Mejor turno (máximo)</li><li>Peor turno (mínimo)</li><li>Promedio general</li><li>Cuántos turnos superaron el promedio</li></ul></div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo de salida</div>Producción turno 1 (0 para terminar): <strong>120</strong>
+Promedio acumulado: 120.0 — Turno OK
+Producción turno 2 (0 para terminar): <strong>85</strong>
+Promedio acumulado: 102.5 — ⬇ Bajo el promedio
+Producción turno 3 (0 para terminar): <strong>0</strong>
+--- Resumen ---
+Turnos: 2 | Mejor: 120 | Peor: 85 | Promedio: 102.5</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code10" placeholder="# Ejercicio 10 — Registro de turnos&#10;turno = 1&#10;producciones = []&#10;while True:&#10;    p = int(input(f'Producción turno {turno} (0 para terminar): '))&#10;    if p == 0: break&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(10)">☐ Marcar como completado</button><span class="check-status" id="st10"></span></div>
+  </div>
+</div>
+
+<!-- EJ 11 -->
+<div class="ejercicio reveal" id="ej11">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">11</div>
+    <div class="ej-info">
+      <div class="ej-tag">for · while anidado · validación · contadores <span class="nivel-badge nivel-2">nivel 2</span></div>
+      <div class="ej-titulo">Control de calidad por lote</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">El operador ingresa cuántos <strong>lotes</strong> quiere analizar (entre 1 y 5). Por cada lote ingresa el peso de <strong>5 piezas</strong> (en gramos). El programa por cada lote:<ul><li>Calcula el promedio y la diferencia con el peso estándar de 250 g</li><li>Muestra si el lote es APROBADO (diferencia ≤ 10 g) o RECHAZADO</li></ul>Al final: cuántos lotes fueron aprobados y cuántos rechazados.</div>
+    <div class="pista">Necesitás un for para los lotes y otro for (dentro del primero) para las 5 piezas de cada lote.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code11" placeholder="# Ejercicio 11 — Control de calidad&#10;PESO_ESTANDAR = 250&#10;lotes = int(input('Cuántos lotes (1-5): '))&#10;aprobados = rechazados = 0&#10;for lote in range(1, lotes + 1):&#10;    print(f'-- Lote {lote} --')&#10;    suma = 0&#10;    for pieza in range(1, 6):&#10;        # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(11)">☐ Marcar como completado</button><span class="check-status" id="st11"></span></div>
+  </div>
+</div>
+
+<!-- EJ 12 -->
+<div class="ejercicio reveal" id="ej12">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">12</div>
+    <div class="ej-info">
+      <div class="ej-tag">while · if · continue · break · validación robusta <span class="nivel-badge nivel-2">nivel 2</span></div>
+      <div class="ej-titulo">Calculadora con historial y límite de errores</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">Hacé una calculadora simple que pide dos números y una operación (+, -, *, /). El programa:<ul><li>Si la operación es inválida, muestra error y usa <strong>continue</strong> para volver al inicio sin contar ese intento</li><li>Si es división por cero, avisa y usa <strong>continue</strong></li><li>Guarda cada resultado válido en una lista</li><li>Si el usuario lleva <strong>3 errores consecutivos</strong> (inválidos o div/0), usa <strong>break</strong> y cierra el programa</li><li>Si escribe "salir" como operación, termina mostrando todos los resultados guardados</li></ul></div>
+    <div class="pista">Usá una variable <code>errores_seguidos = 0</code> que se resetea a 0 cada vez que hay un cálculo válido.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code12" placeholder="# Ejercicio 12 — Calculadora robusta&#10;resultados = []&#10;errores_seguidos = 0&#10;while True:&#10;    op = input('Operación (+, -, *, / o salir): ')&#10;    if op == 'salir': break&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(12)">☐ Marcar como completado</button><span class="check-status" id="st12"></span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     NIVEL 3 — AVANZANDO
+════════════════════════════════════════════ -->
+<div class="nivel-bloque nivel-bloque-3 reveal">
+  <div class="nivel-bloque-line"></div>
+  <div class="nivel-bloque-txt">// Nivel 3 — Avanzando · EJ 13 al 19</div>
+  <div class="nivel-bloque-line"></div>
+</div>
+
+<!-- EJ 13 -->
+<div class="ejercicio reveal" id="ej13">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">13</div>
+    <div class="ej-info">
+      <div class="ej-tag">for · listas · max · min · sorted · análisis <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Análisis estadístico de sensores</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">Copiá estas lecturas: <code style="color:var(--acc)">lecturas = [41.2, 45.8, 52.1, 38.9, 49.3, 55.7, 43.6, 47.2, 50.0, 36.4, 48.8, 53.3]</code><br><br>Sin usar las funciones sum(), max(), min() directamente, escribí tu propio for para calcular:<ul><li>El valor máximo y mínimo (con variables acumuladoras)</li><li>El promedio</li><li>La mediana (ordená la lista con sorted() y tomá el del medio)</li><li>Cuántas lecturas superan la media</li><li>La lectura más alejada del promedio (la que tiene mayor diferencia absoluta)</li></ul></div>
+    <div class="pista">Para la diferencia absoluta usá <code>abs(valor - promedio)</code>. Guardá el índice del más alejado también.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code13" placeholder="# Ejercicio 13 — Estadísticas sin funciones mágicas&#10;lecturas = [41.2, 45.8, 52.1, 38.9, 49.3, 55.7, 43.6, 47.2, 50.0, 36.4, 48.8, 53.3]&#10;maximo = lecturas[0]&#10;minimo = lecturas[0]&#10;suma = 0&#10;for l in lecturas:&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(13)">☐ Marcar como completado</button><span class="check-status" id="st13"></span></div>
+  </div>
+</div>
+
+<!-- EJ 14 -->
+<div class="ejercicio reveal" id="ej14">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">14</div>
+    <div class="ej-info">
+      <div class="ej-tag">for anidado · patrón · print · lógica <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Mapa de calor de la planta</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">La planta tiene una grilla de N×N sensores de temperatura. El operador ingresa N (entre 3 y 8). Usá un <strong>for dentro de otro for</strong> para generar una tabla donde cada celda muestra la temperatura simulada (calculada como <code>fila * columna + 10</code>).<br><br>Si la temperatura de una celda supera 40°C, mostrá <strong>🔴</strong> en vez del número. Si está entre 25 y 40, mostrá <strong>🟡</strong>. Si es menor a 25, mostrá <strong>🟢</strong>.<br><br>Al final contá cuántas celdas están en cada estado.</div>
+    <div class="ejemplo"><div class="ejemplo-label">Ejemplo con N = 4</div>N de sensores (3-8): <strong>4</strong>
+Mapa de calor:
+🟢🟢🟢🟢
+🟢🟡🟡🟡
+🟢🟡🟡🔴
+🟢🟡🔴🔴
+Verde: 6 | Amarillo: 6 | Rojo: 4</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code14" placeholder="# Ejercicio 14 — Mapa de calor&#10;n = int(input('N de sensores (3-8): '))&#10;verde = amarillo = rojo = 0&#10;print('Mapa de calor:')&#10;for fila in range(1, n + 1):&#10;    fila_str = ''&#10;    for col in range(1, n + 1):&#10;        temp = fila * col + 10&#10;        # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(14)">☐ Marcar como completado</button><span class="check-status" id="st14"></span></div>
+  </div>
+</div>
+
+<!-- EJ 15 -->
+<div class="ejercicio reveal" id="ej15">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">15</div>
+    <div class="ej-info">
+      <div class="ej-tag">while · listas · append · condicionales encadenadas <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Sistema de alarmas con prioridades</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">El operador ingresa valores de presión de una cañería (en bar) uno por uno hasta escribir -1. El sistema clasifica cada lectura en tres listas separadas:<ul><li><code>alarmas_criticas</code>: presión &gt; 8.0 bar</li><li><code>alarmas_normales</code>: presión entre 6.1 y 8.0 bar</li><li><code>lecturas_ok</code>: presión ≤ 6.0 bar</li></ul>Al final muestra cada lista ordenada de mayor a menor y cuántos elementos tiene cada una. Si hay alguna alarma crítica, termina con "⛔ REVISAR SISTEMA — hay alarmas críticas activas".</div>
+    <div class="pista">Usá <code>lista.append(valor)</code> para agregar a cada lista y <code>sorted(lista, reverse=True)</code> para ordenar.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code15" placeholder="# Ejercicio 15 — Sistema de alarmas&#10;alarmas_criticas = []&#10;alarmas_normales = []&#10;lecturas_ok = []&#10;while True:&#10;    p = float(input('Presión (bar) o -1 para terminar: '))&#10;    if p == -1: break&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(15)">☐ Marcar como completado</button><span class="check-status" id="st15"></span></div>
+  </div>
+</div>
+
+<!-- EJ 16 -->
+<div class="ejercicio reveal" id="ej16">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">16</div>
+    <div class="ej-info">
+      <div class="ej-tag">for · listas · enumerate · zip · comparación <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Comparador de sensores gemelos</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">Un sistema tiene dos sensores de temperatura redundantes. Copiá estas lecturas:<br><code style="color:var(--acc)">sensor_A = [72.1, 85.3, 91.2, 78.9, 83.4, 95.1, 76.5, 88.0]</code><br><code style="color:var(--acc)">sensor_B = [71.8, 86.0, 89.9, 79.3, 84.1, 94.8, 77.2, 87.5]</code><br><br>Usá <strong>for</strong> con <strong>enumerate</strong> o <strong>zip</strong> para comparar lectura a lectura:<ul><li>La diferencia absoluta entre ambos sensores</li><li>Si la diferencia supera 2.0°C → "⚠ Divergencia detectada"</li><li>Cuál sensor dio el valor más alto en cada lectura</li></ul>Al final: promedio de diferencias y si el sistema es CONFIABLE (todas diferencias ≤ 2.0) o NO CONFIABLE.</div>
+    <div class="pista">Podés iterar con <code>for i, (a, b) in enumerate(zip(sensor_A, sensor_B)):</code></div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code16" placeholder="# Ejercicio 16 — Sensores gemelos&#10;sensor_A = [72.1, 85.3, 91.2, 78.9, 83.4, 95.1, 76.5, 88.0]&#10;sensor_B = [71.8, 86.0, 89.9, 79.3, 84.1, 94.8, 77.2, 87.5]&#10;diferencias = []&#10;for i, (a, b) in enumerate(zip(sensor_A, sensor_B)):&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(16)">☐ Marcar como completado</button><span class="check-status" id="st16"></span></div>
+  </div>
+</div>
+
+<!-- EJ 17 -->
+<div class="ejercicio reveal" id="ej17">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">17</div>
+    <div class="ej-info">
+      <div class="ej-tag">while · for · lógica compleja · acumuladores <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Simulador de llenado de tanques</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">El operador configura 3 tanques. Para cada uno ingresa: capacidad máxima (litros) y caudal de llenado (litros/minuto). El programa simula el llenado minuto a minuto hasta que <strong>todos estén llenos</strong>:<ul><li>Cada minuto muestra el nivel de cada tanque con un porcentaje</li><li>Cuando un tanque llega al 100%, muestra "Tanque X lleno — deteniendo bomba"</li><li>El loop termina cuando los 3 tanques están llenos</li></ul>Al final muestra en cuántos minutos se llenó cada uno y cuál tardó más.</div>
+    <div class="pista">Usá una lista de diccionarios o 3 listas paralelas para guardar nivel, capacidad y caudal de cada tanque.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code17" style="min-height:180px;" placeholder="# Ejercicio 17 — Llenado de tanques&#10;tanques = []&#10;for i in range(1, 4):&#10;    cap = float(input(f'Tanque {i} — capacidad (L): '))&#10;    caudal = float(input(f'Tanque {i} — caudal (L/min): '))&#10;    tanques.append({'cap': cap, 'caudal': caudal, 'nivel': 0.0, 'lleno': False, 'tiempo': 0})&#10;minuto = 0&#10;while True:&#10;    minuto += 1&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(17)">☐ Marcar como completado</button><span class="check-status" id="st17"></span></div>
+  </div>
+</div>
+
+<!-- EJ 18 -->
+<div class="ejercicio reveal" id="ej18">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">18</div>
+    <div class="ej-info">
+      <div class="ej-tag">for · listas · condicionales · generación de reporte <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Reporte automático de turno</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">El operador ingresa cuántos empleados trabajaron en el turno (entre 1 y 10). Para cada empleado ingresa: nombre, horas trabajadas y si tuvo incidente (s/n). El programa genera un reporte completo:<ul><li>Lista todos los empleados con sus horas y estado de incidente</li><li>Calcula el total de horas del turno</li><li>Lista solo los empleados con incidente</li><li>Calcula el promedio de horas por empleado</li><li>Muestra quién trabajó más horas y quién menos</li><li>Si más del 30% tuvo incidente, muestra "⚠ TURNO CON ALTA ACCIDENTABILIDAD"</li></ul></div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code18" style="min-height:180px;" placeholder="# Ejercicio 18 — Reporte de turno&#10;n = int(input('Empleados en el turno (1-10): '))&#10;empleados = []&#10;for i in range(n):&#10;    nombre = input(f'Empleado {i+1} — nombre: ')&#10;    horas = float(input(f'Horas trabajadas: '))&#10;    incidente = input('¿Tuvo incidente? (s/n): ').lower()&#10;    empleados.append({'nombre': nombre, 'horas': horas, 'incidente': incidente == 's'})&#10;# ... generá el reporte con for sobre la lista"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(18)">☐ Marcar como completado</button><span class="check-status" id="st18"></span></div>
+  </div>
+</div>
+
+<!-- EJ 19 -->
+<div class="ejercicio reveal" id="ej19">
+  <div class="ejercicio-hdr">
+    <div class="ej-num">19</div>
+    <div class="ej-info">
+      <div class="ej-tag">while · for · listas · lógica de juego <span class="nivel-badge nivel-3">nivel 3</span></div>
+      <div class="ej-titulo">Juego: adivinar el nivel de la represa</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado">Creá un juego de adivinanzas sin usar la librería random. El "nivel secreto" es calculado así: <code style="color:var(--acc)">secreto = (dia_nacimiento * 3 + mes_nacimiento * 7) % 60 + 1</code>.<br><br>El operador ingresa su día y mes de nacimiento para generar el secreto. Luego tiene <strong>6 intentos</strong> para adivinar el nivel (1–60):<ul><li>Cada intento dice "muy bajo", "bajo", "cerca", "alto", "muy alto" o "¡Correcto!" según la diferencia</li><li>Guarda el historial de intentos en una lista</li><li>Si lo adivina antes de 6 intentos, muestra en cuántos lo logró</li><li>Si no lo adivina, revela el número y muestra todos sus intentos</li></ul></div>
+    <div class="pista">Diferencias: &gt;20 → "muy"; entre 10-20 → sin "muy"; entre 5-10 → "cerca"; &lt;5 → "muy cerca".</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code19" style="min-height:180px;" placeholder="# Ejercicio 19 — Adivinar el nivel&#10;dia = int(input('Tu día de nacimiento: '))&#10;mes = int(input('Tu mes de nacimiento: '))&#10;secreto = (dia * 3 + mes * 7) % 60 + 1&#10;intentos = []&#10;for intento in range(1, 7):&#10;    guess = int(input(f'Intento {intento}/6 — ¿Cuál es el nivel? (1-60): '))&#10;    intentos.append(guess)&#10;    diferencia = abs(guess - secreto)&#10;    if guess == secreto:&#10;        # ...&#10;        break&#10;    # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(19)">☐ Marcar como completado</button><span class="check-status" id="st19"></span></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     NIVEL 4 — MODO EXPERTO
+════════════════════════════════════════════ -->
+<div class="nivel-bloque nivel-bloque-4 reveal">
+  <div class="nivel-bloque-line"></div>
+  <div class="nivel-bloque-txt">// Nivel 4 — Modo Experto · EJ 20 al 23</div>
+  <div class="nivel-bloque-line"></div>
+</div>
+
+<!-- EJ 20 -->
+<div class="ejercicio reveal" id="ej20" style="border-color:rgba(239,68,68,.25);">
+  <div class="ejercicio-hdr" style="background:rgba(239,68,68,.04);">
+    <div class="ej-num" style="border-color:var(--err);color:var(--err);background:rgba(239,68,68,.1);">20</div>
+    <div class="ej-info">
+      <div class="ej-tag" style="color:var(--err);">⚡ experto — for · while · listas · análisis completo <span class="nivel-badge nivel-4">nivel 4</span></div>
+      <div class="ej-titulo">Central de monitoreo histórico</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado" style="border-left-color:var(--err);">El sistema registra lecturas de nivel de la represa durante <strong>7 días</strong>. El operador ingresa <strong>4 lecturas por día</strong> (una por turno: mañana, tarde, noche, madrugada). Al finalizar la carga muestra:<ul><li>El nivel promedio de cada día</li><li>El día con mayor nivel promedio y el de menor</li><li>Las lecturas que superaron el nivel crítico de 50 m (con día y turno)</li><li>La tendencia: si los últimos 3 días promedio son mayores que los primeros 3, es "TENDENCIA ASCENDENTE ⬆", si no "TENDENCIA ESTABLE/DESCEND. ⬇"</li><li>Una tabla resumen de los 7 días con sus promedios</li></ul></div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code20" style="min-height:200px;" placeholder="# Ejercicio 20 — Central de monitoreo histórico&#10;TURNOS = ['Mañana', 'Tarde', 'Noche', 'Madrugada']&#10;CRITICO = 50.0&#10;datos = []  # lista de listas: datos[dia][turno]&#10;for dia in range(1, 8):&#10;    lecturas_dia = []&#10;    print(f'--- Día {dia} ---')&#10;    for turno in TURNOS:&#10;        nivel = float(input(f'{turno}: '))&#10;        lecturas_dia.append(nivel)&#10;    datos.append(lecturas_dia)&#10;# Ahora analizá los datos con for"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(20)" style="border-color:var(--err);color:var(--err);">☐ Marcar como completado</button><span class="check-status" id="st20"></span></div>
+  </div>
+</div>
+
+<!-- EJ 21 -->
+<div class="ejercicio reveal" id="ej21" style="border-color:rgba(239,68,68,.25);">
+  <div class="ejercicio-hdr" style="background:rgba(239,68,68,.04);">
+    <div class="ej-num" style="border-color:var(--err);color:var(--err);background:rgba(239,68,68,.1);">21</div>
+    <div class="ej-info">
+      <div class="ej-tag" style="color:var(--err);">⚡ experto — algoritmo de búsqueda manual <span class="nivel-badge nivel-4">nivel 4</span></div>
+      <div class="ej-titulo">Búsqueda binaria en lecturas ordenadas</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado" style="border-left-color:var(--err);">Implementá una <strong>búsqueda binaria</strong> (sin usar funciones de Python como <code>in</code> o <code>index()</code>) sobre esta lista ya ordenada:<br><code style="color:var(--acc)">niveles = [33.1, 37.4, 41.2, 44.8, 46.3, 48.0, 49.7, 51.2, 53.8, 55.1, 57.3, 59.9]</code><br><br>El usuario ingresa un nivel a buscar. El algoritmo:<ul><li>Define <code>izq = 0</code>, <code>der = len(niveles) - 1</code></li><li>En cada ciclo calcula <code>medio = (izq + der) // 2</code> y compara</li><li>Si el valor del medio es el buscado → encontrado en posición X</li><li>Si el buscado es mayor → <code>izq = medio + 1</code></li><li>Si es menor → <code>der = medio - 1</code></li><li>Muestra en cuántos pasos lo encontró (o que no existe)</li></ul>Luego mostrá cuántos pasos necesitaría una búsqueda lineal (for normal) para comparar.</div>
+    <div class="pista">La búsqueda binaria funciona dividiendo el espacio a la mitad cada vez. En 12 elementos, a lo sumo necesita 4 pasos. Una búsqueda lineal necesitaría hasta 12.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code21" style="min-height:200px;" placeholder="# Ejercicio 21 — Búsqueda binaria&#10;niveles = [33.1, 37.4, 41.2, 44.8, 46.3, 48.0, 49.7, 51.2, 53.8, 55.1, 57.3, 59.9]&#10;buscar = float(input('Nivel a buscar: '))&#10;izq = 0&#10;der = len(niveles) - 1&#10;pasos = 0&#10;encontrado = False&#10;while izq <= der:&#10;    pasos += 1&#10;    medio = (izq + der) // 2&#10;    if niveles[medio] == buscar:&#10;        # ...&#10;    elif buscar > niveles[medio]:&#10;        # ...&#10;    else:&#10;        # ..."></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(21)" style="border-color:var(--err);color:var(--err);">☐ Marcar como completado</button><span class="check-status" id="st21"></span></div>
+  </div>
+</div>
+
+<!-- EJ 22 -->
+<div class="ejercicio reveal" id="ej22" style="border-color:rgba(239,68,68,.25);">
+  <div class="ejercicio-hdr" style="background:rgba(239,68,68,.04);">
+    <div class="ej-num" style="border-color:var(--err);color:var(--err);background:rgba(239,68,68,.1);">22</div>
+    <div class="ej-info">
+      <div class="ej-tag" style="color:var(--err);">⚡ experto — Bubble Sort manual <span class="nivel-badge nivel-4">nivel 4</span></div>
+      <div class="ej-titulo">Ordenar lecturas con Bubble Sort</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado" style="border-left-color:var(--err);">Implementá el algoritmo Bubble Sort <strong>sin usar sorted() ni .sort()</strong> para ordenar lecturas de caudal:<br><code style="color:var(--acc)">caudales = [7.3, 2.1, 9.8, 4.5, 6.2, 1.7, 8.4, 3.9, 5.6, 0.8]</code><br><br>El algoritmo:<ul><li>Usa dos for anidados para comparar pares adyacentes</li><li>Si el elemento actual es mayor al siguiente, los intercambia</li><li>Muestra la lista después de cada pasada completa</li><li>Cuenta cuántos intercambios hizo en total</li><li>Al final compara el resultado con <code>sorted()</code> para verificar que sea correcto</li></ul>Después repetí el proceso pero ordenando <strong>de mayor a menor</strong> (solo cambiá la condición de comparación).</div>
+    <div class="pista">Para intercambiar dos elementos: <code>lista[i], lista[i+1] = lista[i+1], lista[i]</code></div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code22" style="min-height:200px;" placeholder="# Ejercicio 22 — Bubble Sort&#10;caudales = [7.3, 2.1, 9.8, 4.5, 6.2, 1.7, 8.4, 3.9, 5.6, 0.8]&#10;n = len(caudales)&#10;intercambios = 0&#10;print(f'Original: {caudales}')&#10;for pasada in range(n - 1):&#10;    for i in range(n - 1 - pasada):&#10;        if caudales[i] > caudales[i + 1]:&#10;            # ...&#10;    print(f'Pasada {pasada + 1}: {caudales}')"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(22)" style="border-color:var(--err);color:var(--err);">☐ Marcar como completado</button><span class="check-status" id="st22"></span></div>
+  </div>
+</div>
+
+<!-- EJ 23 — JEFE FINAL -->
+<div class="ejercicio reveal" id="ej23" style="border-color:rgba(239,68,68,.5);box-shadow:0 0 30px rgba(239,68,68,.08);">
+  <div class="ejercicio-hdr" style="background:rgba(239,68,68,.07);">
+    <div class="ej-num" style="border-color:var(--err);color:var(--err);background:rgba(239,68,68,.15);width:48px;height:48px;font-size:15px;">23</div>
+    <div class="ej-info">
+      <div class="ej-tag" style="color:var(--err);">👑 JEFE FINAL — todas las herramientas del año <span class="nivel-badge nivel-4">nivel 4</span></div>
+      <div class="ej-titulo">Sistema completo de gestión de la Represa El Calafate</div>
+    </div>
+  </div>
+  <div class="ej-body">
+    <div class="ej-enunciado" style="border-left-color:var(--err);">
+      Este es el ejercicio más completo. Creá un programa de gestión de la represa con <strong>menú de opciones</strong> que permanece activo hasta que el usuario elija salir. El menú tiene estas opciones:<br><br>
+      <strong>1. Registrar turno</strong> — Pide nivel (validado 0–60 m), caudal entrante y caudal saliente. Los guarda en 3 listas paralelas. Calcula la variación neta del nivel.<br>
+      <strong>2. Ver resumen del día</strong> — Muestra todos los turnos registrados con un número de fila. Calcula nivel mínimo, máximo y promedio del día. Muestra cuántos turnos tuvieron nivel crítico (&gt;50 m).<br>
+      <strong>3. Buscar turno</strong> — El usuario ingresa un número de turno y ve los datos de ese turno. Si no existe muestra error.<br>
+      <strong>4. Ordenar turnos por nivel</strong> — Muestra los turnos ordenados de mayor a menor nivel (implementá un Bubble Sort sobre una copia de la lista de niveles junto con sus índices originales).<br>
+      <strong>5. Reporte de alertas</strong> — Lista todos los turnos con nivel &gt;48 m con su posición en la lista y el nivel exacto.<br>
+      <strong>6. Salir</strong> — Muestra un resumen final y cierra el programa.<br><br>
+      Validaciones obligatorias: el nivel siempre debe estar entre 0 y 60 (pedirlo de nuevo si no). El menú rechaza opciones fuera de 1–6.
+    </div>
+    <div class="pista">Arrancá de a partes: primero hacé el menú vacío que muestra las opciones y sale. Después implementá una opción a la vez. No intentes hacer todo junto.</div>
+    <label class="code-label">Tu código Python:</label>
+    <textarea class="code-area" id="code23" style="min-height:280px;" placeholder="# Ejercicio 23 — Sistema completo Represa El Calafate&#10;# ESTRATEGIA: implementá el menú primero, después cada opción de a una&#10;niveles = []&#10;caudales_entrada = []&#10;caudales_salida = []&#10;&#10;while True:&#10;    print()&#10;    print('=== SISTEMA REPRESA EL CALAFATE ===')&#10;    print('1. Registrar turno')&#10;    print('2. Ver resumen del día')&#10;    print('3. Buscar turno')&#10;    print('4. Ordenar por nivel')&#10;    print('5. Reporte de alertas')&#10;    print('6. Salir')&#10;    opcion = int(input('Opción: '))&#10;    &#10;    if opcion == 1:&#10;        # ...&#10;    elif opcion == 2:&#10;        # ...&#10;    # ...&#10;    elif opcion == 6:&#10;        print('Cerrando sistema...')&#10;        break&#10;    else:&#10;        print('⚠ Opción inválida')"></textarea>
+    <div class="check-row"><button class="check-btn" onclick="marcarHecho(23)" style="border-color:var(--err);color:var(--err);">☐ Marcar como completado</button><span class="check-status" id="st23"></span></div>
   </div>
 </div>
 
 <div class="warn-box">
-  <p>⚠ <strong>Antes de enviar:</strong> asegurate de haber marcado como completados los ejercicios que terminaste. Solo se envían los que tienen código escrito.</p>
+  <p>⚠ <strong>Antes de enviar:</strong> marcá como completados los ejercicios que terminaste. Solo se envían los que tienen código escrito.</p>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FORMULARIO DE ENVÍO
-════════════════════════════════════════════════════════════ -->
 <div class="sec-hdr reveal"><div class="sec-hdr-line"></div><div class="sec-hdr-txt">// enviar al profe</div><div class="sec-hdr-line"></div></div>
 
 <div class="send-card reveal">
   <div class="send-titulo">Enviar mis ejercicios</div>
   <div class="send-sub">Tus respuestas llegan al profe por email y se registran en la planilla de seguimiento.</div>
-
-  <!--
-    INSTRUCCIONES PARA EL PROFE:
-    1. Ir a https://formspree.io → crear cuenta gratuita
-    2. Crear un nuevo form → obtener el endpoint (ej: https://formspree.io/f/xyzwabcd)
-    3. Reemplazar "TU_ENDPOINT_FORMSPREE" en la línea de abajo con ese URL
-    4. En Formspree, activar "Export to CSV" en la sección Submissions para descargar el CSV
-  -->
   <form id="mainForm" action="https://formspree.io/f/TU_ENDPOINT_FORMSPREE" method="POST">
-
-    <!-- Campos ocultos con metadatos -->
     <input type="hidden" name="_subject" value="Ejercicios Programación 3°1° — Taller">
     <input type="hidden" name="completados" id="f_completados" value="">
-    <input type="hidden" name="timestamp"   id="f_ts"          value="">
-    <input type="hidden" name="code_ej1" id="f_code1" value="">
-    <input type="hidden" name="code_ej2" id="f_code2" value="">
-    <input type="hidden" name="code_ej3" id="f_code3" value="">
-    <input type="hidden" name="code_ej4" id="f_code4" value="">
-    <input type="hidden" name="code_ej5" id="f_code5" value="">
-    <input type="hidden" name="code_ej6" id="f_code6" value="">
-    <input type="hidden" name="code_ej7" id="f_code7" value="">
-    <input type="hidden" name="code_ej8" id="f_code8" value="">
+    <input type="hidden" name="timestamp" id="f_ts" value="">
+    <input type="hidden" name="total_completados" id="f_total" value="">
+    <!-- códigos EJ 1–23 -->
+    <script>for(let i=1;i<=23;i++)document.write(`<input type="hidden" name="code_ej${i}" id="f_code${i}" value="">`);</script>
 
     <div class="form-row">
       <div class="form-group">
@@ -701,7 +694,6 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
         </select>
       </div>
     </div>
-
     <div class="form-row">
       <div class="form-group">
         <label class="form-label">¿Qué herramienta te resultó más difícil?</label>
@@ -710,9 +702,12 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
           <option value="print_input">print / input / float</option>
           <option value="if">if / elif / else</option>
           <option value="for">for con range</option>
+          <option value="for_anidado">for dentro de for</option>
           <option value="while">while</option>
+          <option value="listas">listas y append</option>
           <option value="and_or">and / or / not</option>
           <option value="modulo">% (módulo / resto)</option>
+          <option value="break_continue">break / continue</option>
           <option value="ninguna">Ninguna — todo claro</option>
         </select>
       </div>
@@ -727,13 +722,10 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
         </select>
       </div>
     </div>
-
     <label class="form-label" style="display:block;margin-bottom:6px;">Comentario o consulta para el profe (opcional)</label>
     <textarea class="form-notas" name="consulta" placeholder="¿Hay algo que no te quedó claro? ¿Algún ejercicio que no entendiste? Escribilo acá."></textarea>
-
     <button class="send-btn" type="submit" id="sendBtn">Enviar ejercicios al profe →</button>
   </form>
-
   <div class="send-ok" id="sendOk">
     <div class="send-ok-num">✓</div>
     <div class="send-ok-msg">¡Enviado correctamente!</div>
@@ -742,120 +734,79 @@ Revisiones: 2 | Lecturas: 3 | Normal: 5
 </div>
 
 </main>
-
-<footer>
-  Taller de Programación · 3° 1° · <span>Escuela Industrial N°9</span> · El Calafate · 2026 · Prof. Limardo
-</footer>
+<footer>Taller de Programación · 3° 1° · <span>Escuela Industrial N°9</span> · El Calafate · 2026 · Prof. Limardo</footer>
 
 <script>
-// ── Theme, Parallax & Reveals ─────────────────────────────────
+const TOTAL = 23;
+const estado = {};
+for(let i=1;i<=TOTAL;i++) estado[i]=false;
+
+// ── Theme ─────────────────────────────────────────────
 const themeBtn = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('theme') || 'dark';
-
-if(savedTheme === 'light') {
-  document.documentElement.setAttribute('data-theme', 'light');
-  themeBtn.textContent = '🌙 Modo Oscuro';
-}
-
-themeBtn.addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  if(current === 'light') {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', 'dark');
-    themeBtn.textContent = '☀️ Modo Claro';
-  } else {
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');
-    themeBtn.textContent = '🌙 Modo Oscuro';
-  }
+const saved = localStorage.getItem('theme')||'dark';
+if(saved==='light'){document.documentElement.setAttribute('data-theme','light');themeBtn.textContent='🌙 Modo Oscuro';}
+themeBtn.addEventListener('click',()=>{
+  const cur=document.documentElement.getAttribute('data-theme');
+  if(cur==='light'){document.documentElement.removeAttribute('data-theme');localStorage.setItem('theme','dark');themeBtn.textContent='☀️ Modo Claro';}
+  else{document.documentElement.setAttribute('data-theme','light');localStorage.setItem('theme','light');themeBtn.textContent='🌙 Modo Oscuro';}
 });
 
-// Parallax en mousemove
-document.addEventListener('mousemove', (e) => {
-  const shapes = document.querySelectorAll('.shape');
-  const x = (window.innerWidth - e.pageX) / 40;
-  const y = (window.innerHeight - e.pageY) / 40;
-  
-  shapes.forEach(shape => {
-    const speed = shape.getAttribute('data-speed');
-    shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+// ── Parallax ──────────────────────────────────────────
+document.addEventListener('mousemove',e=>{
+  document.querySelectorAll('.shape').forEach(s=>{
+    const sp=s.getAttribute('data-speed');
+    const x=(window.innerWidth-e.pageX)/40;
+    const y=(window.innerHeight-e.pageY)/40;
+    s.style.transform=`translate(${x*sp}px,${y*sp}px)`;
   });
 });
 
-// Scroll Reveal Observer
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('active');
-    }
-  });
-}, { threshold: 0.1 });
+// ── Reveal ────────────────────────────────────────────
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active');});
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// ── Estado de ejercicios ──────────────────────────────────────
-const estado = {1:false,2:false,3:false,4:false,5:false,6:false,7:false,8:false};
-
+// ── Progreso ──────────────────────────────────────────
 function marcarHecho(n){
-  const card = document.getElementById(`ej${n}`);
-  const st   = document.getElementById(`st${n}`);
-  const btn  = card.querySelector('.check-btn');
-  estado[n]  = !estado[n];
-  card.classList.toggle('done', estado[n]);
-  btn.textContent = estado[n] ? '✓ Completado' : '☐ Marcar como completado';
-  st.textContent  = estado[n] ? `Completado a las ${new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}` : '';
+  const card=document.getElementById(`ej${n}`);
+  const st=document.getElementById(`st${n}`);
+  const btn=card.querySelector('.check-btn');
+  estado[n]=!estado[n];
+  card.classList.toggle('done',estado[n]);
+  const etxt=estado[n]?'✓ Completado':'☐ Marcar como completado';
+  btn.textContent=etxt;
+  st.textContent=estado[n]?`Completado a las ${new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}`:'' ;
   actualizarProgreso();
 }
 
 function actualizarProgreso(){
-  const total = Object.keys(estado).length;
-  const hechos= Object.values(estado).filter(Boolean).length;
-  const pct   = Math.round((hechos/total)*100);
-  document.getElementById('progFill').style.width = pct + '%';
-  document.getElementById('progTxt').textContent  = `${hechos} de ${total} ejercicios completados`;
-  document.getElementById('progPct').textContent  = `${pct}%`;
+  const hechos=Object.values(estado).filter(Boolean).length;
+  const pct=Math.round((hechos/TOTAL)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progTxt').textContent=`${hechos} de ${TOTAL} ejercicios completados`;
+  document.getElementById('progPct').textContent=`${pct}%`;
 }
 
-// ── Envío del formulario ──────────────────────────────────────
-document.getElementById('mainForm').addEventListener('submit', function(e){
+// ── Envío ─────────────────────────────────────────────
+document.getElementById('mainForm').addEventListener('submit',function(e){
   e.preventDefault();
-
-  // Inyectar metadatos en campos ocultos
-  const completados = Object.entries(estado)
-    .filter(([,v])=>v).map(([k])=>`EJ${k}`).join(', ') || 'ninguno';
-
-  document.getElementById('f_completados').value = completados;
-  document.getElementById('f_ts').value          = new Date().toLocaleString('es-AR');
-
-  // Inyectar códigos
-  for(let i=1;i<=8;i++){
-    const code = document.getElementById(`code${i}`).value.trim();
-    document.getElementById(`f_code${i}`).value = code || '(sin código)';
+  const completados=Object.entries(estado).filter(([,v])=>v).map(([k])=>`EJ${k}`).join(', ')||'ninguno';
+  document.getElementById('f_completados').value=completados;
+  document.getElementById('f_ts').value=new Date().toLocaleString('es-AR');
+  document.getElementById('f_total').value=Object.values(estado).filter(Boolean).length+'/'+TOTAL;
+  for(let i=1;i<=TOTAL;i++){
+    const el=document.getElementById(`code${i}`);
+    document.getElementById(`f_code${i}`).value=el?el.value.trim()||'(sin código)':'(sin código)';
   }
-
-  const btn = document.getElementById('sendBtn');
-  btn.disabled    = true;
-  btn.textContent = 'Enviando...';
-
-  fetch(this.action, {
-    method:'POST',
-    body: new FormData(this),
-    headers:{'Accept':'application/json'},
-  })
+  const btn=document.getElementById('sendBtn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  fetch(this.action,{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}})
   .then(r=>{
-    if(r.ok){
-      document.getElementById('sendOk').classList.add('show');
-      btn.textContent = '✓ Enviado';
-      document.getElementById('sendOk').scrollIntoView({behavior:'smooth',block:'center'});
-    } else {
-      btn.disabled    = false;
-      btn.textContent = '¡Error! Intentá de nuevo';
-    }
+    if(r.ok){document.getElementById('sendOk').classList.add('show');btn.textContent='✓ Enviado';document.getElementById('sendOk').scrollIntoView({behavior:'smooth',block:'center'});}
+    else{btn.disabled=false;btn.textContent='¡Error! Intentá de nuevo';}
   })
-  .catch(()=>{
-    btn.disabled    = false;
-    btn.textContent = '¡Error de conexión! Intentá de nuevo';
-  });
+  .catch(()=>{btn.disabled=false;btn.textContent='¡Error de conexión! Intentá de nuevo';});
 });
 </script>
 </body>
